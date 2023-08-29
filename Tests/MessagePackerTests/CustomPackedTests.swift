@@ -84,7 +84,7 @@ class CustomPackedTests: XCTestCase {
 
     func testCustomClass() {
         let input = Animal(legCount: 23791724)
-        let output = Data([129, 168, 108, 101, 103, 67, 111, 117, 110, 116, 206, 1, 107, 8, 108])
+        let output = Data([129, 168, 108, 101, 103, 67, 111, 117, 110, 116, 210, 1, 107, 8, 108])
         XCTAssertEqual(try encoder.encode(input), output)
     }
 
@@ -108,7 +108,7 @@ class CustomPackedTests: XCTestCase {
 
     func testCustomUnkeyedCollection() {
         let input: CustomUnkeyedCollection = [1, 2000, 23791724]
-        let output = Data([147, 1, 205, 7, 208, 206, 1, 107, 8, 108])
+        let output = Data([147, 1, 209, 7, 208, 210, 1, 107, 8, 108])
         XCTAssertEqual(try encoder.encode(input), output)
     }
 
@@ -133,8 +133,8 @@ class CustomPackedTests: XCTestCase {
             XCTAssertEqual(result.count, output.count)
             XCTAssertEqual(result.first, output.first)
             XCTAssertEqual(dic[Data([161, 97])], Data([1]))
-            XCTAssertEqual(dic[Data([161, 98])], Data([205, 7, 208]))
-            XCTAssertEqual(dic[Data([161, 99])], Data([206, 1, 107, 8, 108]))
+            XCTAssertEqual(dic[Data([161, 98])], Data([0xd1, 7, 208]))
+            XCTAssertEqual(dic[Data([161, 99])], Data([0xd2, 1, 107, 8, 108]))
         } catch {
             XCTFail(error.localizedDescription)
         }

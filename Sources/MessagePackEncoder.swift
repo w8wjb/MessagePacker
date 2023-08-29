@@ -44,7 +44,30 @@ private extension MessagePackEncoder {
     }
 
     func boxInteger<T: BinaryInteger>(_ value: T) -> Data {
-        return value > 0 ? UInt64(value).pack() : Int64(value).pack()
+        switch value {
+        case let v as UInt:
+            return v.pack()
+        case let v as UInt8:
+            return v.pack()
+        case let v as UInt16:
+            return v.pack()
+        case let v as UInt32:
+            return v.pack()
+        case let v as UInt64:
+            return v.pack()
+        case let v as Int:
+            return v.pack()
+        case let v as Int8:
+            return v.pack()
+        case let v as Int16:
+            return v.pack()
+        case let v as Int32:
+            return v.pack()
+        case let v as Int64:
+            return v.pack()
+        default:
+            return value > 0 ? UInt64(value).pack() : Int64(value).pack()
+        }
     }
 
     func boxMessagePack<T: MessagePackable>(_ value: T) -> Data {

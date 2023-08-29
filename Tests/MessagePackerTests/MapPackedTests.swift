@@ -40,7 +40,7 @@ class MapPackedTests: XCTestCase {
 
     func testMap32() {
         let input = (0..<0x10000).reduce(into: [String: Int]()) { $0[String($1)] = $1 }
-        let output = 578335
+        let output = 643999
         XCTAssertEqual((try encoder.encode(input)).count, output)
     }
 

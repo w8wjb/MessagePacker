@@ -118,8 +118,10 @@ extension FloatUnpackedTests {
 
 extension IntegerPackedTests {
     static let __allTests = [
-        ("testInt16", testInt16),
-        ("testInt32", testInt32),
+        ("testInt16Negative", testInt16Negative),
+        ("testInt16Positive", testInt16Positive),
+        ("testInt32Negative", testInt32Negative),
+        ("testInt32Positive", testInt32Positive),
         ("testInt64", testInt64),
         ("testInt8", testInt8),
         ("testNegativeFixint", testNegativeFixint),

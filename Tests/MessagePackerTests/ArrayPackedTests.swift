@@ -22,19 +22,19 @@ class ArrayPackedTests: XCTestCase {
 
     func testNilArray() {
         let input: [Int?] = [1, nil, 32, nil, 480]
-        let output = Data([149, 1, 192, 32, 192, 205, 1, 224])
+        let output = Data([149, 1, 192, 32, 192, 209, 1, 224])
         XCTAssertEqual(try encoder.encode(input), output)
     }
 
     func testFixArray() {
         let input = [1 ,2000, 23791724]
-        let output = Data([147, 1, 205, 7, 208, 206, 1, 107, 8, 108])
+        let output = Data([147, 1, 0xd1, 7, 208, 0xd2, 1, 107, 8, 108])
         XCTAssertEqual(try encoder.encode(input), output)
     }
 
     func test2DimensionalArray() {
         let input = [[1 ,32, 480],[10 ,320, 4800]]
-        let output = Data([146, 147, 1, 32, 205, 1, 224, 147, 10, 205, 1, 64, 205, 18, 192])
+        let output = Data([146, 147, 1, 32, 0xd1, 1, 224, 147, 10, 0xd1, 1, 64, 0xd1, 18, 192])
         XCTAssertEqual(try encoder.encode(input), output)
     }
 
